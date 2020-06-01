@@ -1,0 +1,2088 @@
+# - Smart Irrigation - https://github.com/jeroenterheerdt/HAsmartirrigation
+
+rainbird:
+  - host: !secret rainbird_IP
+    password: !secret rainbird_password
+    trigger_time: 0:15
+    zones:
+      1:
+        friendly_name: RainBird Zone 1
+      2:
+        friendly_name: RainBird Zone 2
+      3:
+        friendly_name: RainBird Zone 3
+      4:
+        friendly_name: RainBird Zone 4
+      5:
+        friendly_name: RainBird Zone 5
+      6:
+        friendly_name: RainBird Zone 6
+      7:
+        friendly_name: RainBird Zone 7
+      8:
+        friendly_name: RainBird Zone 8
+
+
+group:
+  rainbird_all_sprinklers:
+    name: Rainbird sprinklers (ANY)
+    entities:
+      - switch.rainbird_zone_1
+      - switch.rainbird_zone_2
+      - switch.rainbird_zone_3
+      - switch.rainbird_zone_4
+      - switch.rainbird_zone_5
+      - switch.rainbird_zone_6
+      - switch.rainbird_zone_7
+      - switch.rainbird_zone_8
+
+
+homeassistant:
+  customize:
+    switch.rainbird_zone_1:
+      friendly_name: p1_zone1
+      icon: mdi:water-pump
+
+    switch.rainbird_zone_2:
+      friendly_name: p2_zone2
+      icon: mdi:water-pump
+
+    switch.rainbird_zone_3:
+      friendly_name: p3_zone3
+      icon: mdi:water-pump
+
+    switch.rainbird_zone_4:
+      friendly_name: p4_zone4
+      icon: mdi:water-pump
+
+    switch.rainbird_zone_5:
+      friendly_name: p5_zone5
+      icon: mdi:water-pump
+
+    switch.rainbird_zone_6:
+      friendly_name: p6_zone6
+      icon: mdi:water-pump
+
+    switch.rainbird_zone_7:
+      friendly_name: p7_zone7
+      icon: mdi:water-pump
+
+    switch.rainbird_zone_8:
+      friendly_name: p8_zone8
+      icon: mdi:water-pump
+
+
+input_number:
+
+  smart_irrigation_max_duration: #max irrigation duration for safety reason
+    name: Max irrigation time
+    min: 0
+    max: 20
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:timer-sand 
+
+  smart_irrigation_manual_duration: #manual irrigation duration
+    name: Manual duration (ALL)
+    min: 0
+    max: 20
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:progress 
+
+  smart_irrigation_p1_duration: #manual irrigation duration
+    name: P1 manual time
+    min: 0
+    max: 20
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:clock-fast 
+
+  smart_irrigation_p2_duration:
+    name: P2 manual time
+    min: 0
+    max: 20
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:clock-fast 
+
+  smart_irrigation_p3_duration:
+    name: P3 manual time
+    min: 0
+    max: 20
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:clock-fast 
+
+  smart_irrigation_p4_duration:
+    name: P4 manual time
+    min: 0
+    max: 20
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:clock-fast 
+
+  smart_irrigation_p5_duration:
+    name: P5 manual time
+    min: 0
+    max: 20
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:clock-fast 
+
+  smart_irrigation_p6_duration:
+    name: P6 manual time
+    min: 0
+    max: 20
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:clock-fast 
+
+  smart_irrigation_p7_duration:
+    name: P7 manual time
+    min: 0
+    max: 20
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:clock-fast 
+
+  smart_irrigation_p8_duration:
+    name: P8 manual time
+    min: 0
+    max: 20
+    step: 1
+    unit_of_measurement: min
+    icon: mdi:clock-fast 
+
+
+  smart_irrigation_adj_pct: #manual GLOBAL irrigation duration adjustment in order to tune 
+    name: Global irrigation duration adjustment %
+    min: 0
+    max: 150
+    step: 10
+    unit_of_measurement: '%'
+    icon: mdi:tune 
+
+
+  smart_irrigation_p1_adj_pct: #manual irrigation duration adjustment in order to tune 
+    name: P1 duration adjustment %
+    min: 0
+    max: 150
+    step: 10
+    unit_of_measurement: '%'
+    icon: mdi:tune 
+
+  smart_irrigation_p2_adj_pct:
+    name: P2 duration adjustment %
+    min: 0
+    max: 150
+    step: 10
+    unit_of_measurement: '%'
+    icon: mdi:tune 
+
+  smart_irrigation_p3_adj_pct:  
+    name: P3 duration adjustment %
+    min: 0
+    max: 150
+    step: 10
+    unit_of_measurement: '%'
+    icon: mdi:tune 
+
+  smart_irrigation_p4_adj_pct:  
+    name: P4 duration adjustment %
+    min: 0
+    max: 150
+    step: 10
+    unit_of_measurement: '%'
+    icon: mdi:tune 
+
+  smart_irrigation_p5_adj_pct:  
+    name: P5 duration adjustment %
+    min: 0
+    max: 150
+    step: 10
+    unit_of_measurement: '%'
+    icon: mdi:tune 
+
+  smart_irrigation_p6_adj_pct:  
+    name: P6 duration adjustment %
+    min: 0
+    max: 150
+    step: 10
+    unit_of_measurement: '%'
+    icon: mdi:tune 
+
+  smart_irrigation_p7_adj_pct:  
+    name: P7 duration adjustment %
+    min: 0
+    max: 150
+    step: 10
+    unit_of_measurement: '%'
+    icon: mdi:tune 
+
+  smart_irrigation_p8_adj_pct:  
+    name: P8 duration adjustment %
+    min: 0
+    max: 150
+    step: 10
+    unit_of_measurement: '%'
+    icon: mdi:tune 
+
+
+input_boolean:
+  smart_irrigation_enabled: 
+    name: Enable Smart Irrigation 
+  smart_irrigation_force_stop: 
+    name: Force stop running Smart Irrigation 
+  smart_irrigation_force_manual_mode: 
+    name: Enable Manual force Irrigation 
+  smart_irrigation_show_stats: 
+    name: Show stats Smart Irrigation 
+  smart_irrigation_show_info: 
+    name: Show info Smart Irrigation 
+  smart_irrigation_show_rainbird_sw: 
+    name: Show Rainbird switches 
+  smart_irrigation_show_zone1: 
+    name: Show Zone 1 
+  smart_irrigation_show_zone2: 
+    name: Show Zone 2 
+  smart_irrigation_show_zone3: 
+    name: Show Zone 3 
+  smart_irrigation_show_zone4: 
+    name: Show Zone 4 
+  smart_irrigation_show_zone5: 
+    name: Show Zone 5 
+  smart_irrigation_show_zone6: 
+    name: Show Zone 6 
+  smart_irrigation_show_zone7: 
+    name: Show Zone 7 
+  smart_irrigation_show_zone8: 
+    name: Show Zone 8 
+
+
+var: 
+  smart_irrigation_progress_status: #variable to track progress of irrigation
+    friendly_name: 'Smart Irrigation status'
+    initial_value: 'idle'
+    icon: mdi:state-machine
+    restore: false
+
+
+timer:
+  smart_irrigation_zone_timer:  #countdown to see where we are with currently irrgated zone
+    icon: mdi:progress-clock
+
+
+sensor:
+  - platform: history_stats
+    name: rainbird_zone_1_history_today
+    entity_id: switch.rainbird_zone_1
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_1_history_yesterday
+    entity_id: switch.rainbird_zone_1
+    state: 'on'
+    type: time
+    end: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    duration:
+      hours: 24
+  - platform: history_stats
+    name: rainbird_zone_1_history_week
+    entity_id: switch.rainbird_zone_1
+    state: 'on'
+    type: time
+    start: '{{ as_timestamp( now().replace(hour=0, minute=0, second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_1_history_month
+    entity_id: switch.rainbird_zone_1
+    state: 'on'
+    type: time
+    start: '{{ now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_1_history_year
+    entity_id: switch.rainbird_zone_1
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: rainbird_zone_2_history_today
+    entity_id: switch.rainbird_zone_2
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_2_history_yesterday
+    entity_id: switch.rainbird_zone_2
+    state: 'on'
+    type: time
+    end: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    duration:
+      hours: 24
+  - platform: history_stats
+    name: rainbird_zone_2_history_week
+    entity_id: switch.rainbird_zone_2
+    state: 'on'
+    type: time
+    start: '{{ as_timestamp( now().replace(hour=0, minute=0, second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_2_history_month
+    entity_id: switch.rainbird_zone_2
+    state: 'on'
+    type: time
+    start: '{{ now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_2_history_year
+    entity_id: switch.rainbird_zone_2
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: rainbird_zone_3_history_today
+    entity_id: switch.rainbird_zone_3
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_3_history_yesterday
+    entity_id: switch.rainbird_zone_3
+    state: 'on'
+    type: time
+    end: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    duration:
+      hours: 24
+  - platform: history_stats
+    name: rainbird_zone_3_history_week
+    entity_id: switch.rainbird_zone_3
+    state: 'on'
+    type: time
+    start: '{{ as_timestamp( now().replace(hour=0, minute=0, second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_3_history_month
+    entity_id: switch.rainbird_zone_3
+    state: 'on'
+    type: time
+    start: '{{ now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_3_history_year
+    entity_id: switch.rainbird_zone_3
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: rainbird_zone_4_history_today
+    entity_id: switch.rainbird_zone_4
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_4_history_yesterday
+    entity_id: switch.rainbird_zone_4
+    state: 'on'
+    type: time
+    end: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    duration:
+      hours: 24
+  - platform: history_stats
+    name: rainbird_zone_4_history_week
+    entity_id: switch.rainbird_zone_4
+    state: 'on'
+    type: time
+    start: '{{ as_timestamp( now().replace(hour=0, minute=0, second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_4_history_month
+    entity_id: switch.rainbird_zone_4
+    state: 'on'
+    type: time
+    start: '{{ now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_4_history_year
+    entity_id: switch.rainbird_zone_4
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: rainbird_zone_5_history_today
+    entity_id: switch.rainbird_zone_5
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_5_history_yesterday
+    entity_id: switch.rainbird_zone_5
+    state: 'on'
+    type: time
+    end: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    duration:
+      hours: 24
+  - platform: history_stats
+    name: rainbird_zone_5_history_week
+    entity_id: switch.rainbird_zone_5
+    state: 'on'
+    type: time
+    start: '{{ as_timestamp( now().replace(hour=0, minute=0, second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_5_history_month
+    entity_id: switch.rainbird_zone_5
+    state: 'on'
+    type: time
+    start: '{{ now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_5_history_year
+    entity_id: switch.rainbird_zone_5
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: rainbird_zone_6_history_today
+    entity_id: switch.rainbird_zone_6
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_6_history_yesterday
+    entity_id: switch.rainbird_zone_6
+    state: 'on'
+    type: time
+    end: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    duration:
+      hours: 24
+  - platform: history_stats
+    name: rainbird_zone_6_history_week
+    entity_id: switch.rainbird_zone_6
+    state: 'on'
+    type: time
+    start: '{{ as_timestamp( now().replace(hour=0, minute=0, second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_6_history_month
+    entity_id: switch.rainbird_zone_6
+    state: 'on'
+    type: time
+    start: '{{ now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_6_history_year
+    entity_id: switch.rainbird_zone_6
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: rainbird_zone_7_history_today
+    entity_id: switch.rainbird_zone_7
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_7_history_yesterday
+    entity_id: switch.rainbird_zone_7
+    state: 'on'
+    type: time
+    end: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    duration:
+      hours: 24
+  - platform: history_stats
+    name: rainbird_zone_7_history_week
+    entity_id: switch.rainbird_zone_7
+    state: 'on'
+    type: time
+    start: '{{ as_timestamp( now().replace(hour=0, minute=0, second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_7_history_month
+    entity_id: switch.rainbird_zone_7
+    state: 'on'
+    type: time
+    start: '{{ now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_7_history_year
+    entity_id: switch.rainbird_zone_7
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: history_stats
+    name: rainbird_zone_8_history_today
+    entity_id: switch.rainbird_zone_8
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_8_history_yesterday
+    entity_id: switch.rainbird_zone_8
+    state: 'on'
+    type: time
+    end: '{{ now().replace(hour=0, minute=0, second=0) }}'
+    duration:
+      hours: 24
+  - platform: history_stats
+    name: rainbird_zone_8_history_week
+    entity_id: switch.rainbird_zone_8
+    state: 'on'
+    type: time
+    start: '{{ as_timestamp( now().replace(hour=0, minute=0, second=0) ) - now().weekday() * 86400 }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_8_history_month
+    entity_id: switch.rainbird_zone_8
+    state: 'on'
+    type: time
+    start: '{{ now().replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+  - platform: history_stats
+    name: rainbird_zone_8_history_year
+    entity_id: switch.rainbird_zone_8
+    state: 'on'
+    type: time
+    start: '{{ now().replace(month=1).replace(day=1).replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+  - platform: template
+    sensors:
+
+      smart_irrigation_adjusted_duration:
+        unit_of_measurement: min
+        friendly_name: "Smart Irrigation Adjusted duration"
+        icon_template: "mdi:timelapse"
+        value_template: >- 
+          {% if (state_attr('sensor.smart_irrigation_daily_adjusted_run_time','adjusted_run_time_minutes')|round() * states("input_number.smart_irrigation_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+            {{ states("input_number.smart_irrigation_max_duration")|int }}
+          {% else %}
+            {{ (state_attr('sensor.smart_irrigation_daily_adjusted_run_time','adjusted_run_time_minutes')|round() * states("input_number.smart_irrigation_adj_pct")|int/100 )|int }}
+          {% endif %}
+
+
+      smart_irrigation_p1_duration:
+        unit_of_measurement: min
+        friendly_name: "Smart Irrigation adjusted P1 duration"
+        icon_template: "mdi:timelapse"
+        value_template: >-
+          {% if (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p1_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+            {{ states("input_number.smart_irrigation_max_duration")|int }}
+          {% else %}
+            {{ (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p1_adj_pct")|int/100)|int }}
+          {% endif %}
+
+      smart_irrigation_p2_duration:
+        unit_of_measurement: min
+        friendly_name: "Smart Irrigation adjusted P2 duration"
+        icon_template: "mdi:timelapse"
+        value_template: >-
+          {% if (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p2_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+            {{ states("input_number.smart_irrigation_max_duration")|int }}
+          {% else %}
+            {{ (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p2_adj_pct")|int/100)|int }}
+          {% endif %}
+
+      smart_irrigation_p3_duration:
+        unit_of_measurement: min
+        friendly_name: "Smart Irrigation adjusted P3 duration"
+        icon_template: "mdi:timelapse"
+        value_template: >-
+          {% if (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p3_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+            {{ states("input_number.smart_irrigation_max_duration")|int }}
+          {% else %}
+            {{ (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p3_adj_pct")|int/100)|int }}
+          {% endif %}
+
+      smart_irrigation_p4_duration:
+        unit_of_measurement: min
+        friendly_name: "Smart Irrigation adjusted P4 duration"
+        icon_template: "mdi:timelapse"
+        value_template: >-
+          {% if (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p4_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+            {{ states("input_number.smart_irrigation_max_duration")|int }}
+          {% else %}
+            {{ (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p4_adj_pct")|int/100)|int }}
+          {% endif %}
+
+      smart_irrigation_p5_duration:
+        unit_of_measurement: min
+        friendly_name: "Smart Irrigation adjusted P5 duration"
+        icon_template: "mdi:timelapse"
+        value_template: >-
+          {% if (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p5_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+            {{ states("input_number.smart_irrigation_max_duration")|int }}
+          {% else %}
+            {{ (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p5_adj_pct")|int/100)|int }}
+          {% endif %}
+
+      smart_irrigation_p6_duration:
+        unit_of_measurement: min
+        friendly_name: "Smart Irrigation adjusted P6 duration"
+        icon_template: "mdi:timelapse"
+        value_template: >-
+          {% if (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p6_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+            {{ states("input_number.smart_irrigation_max_duration")|int }}
+          {% else %}
+            {{ (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p6_adj_pct")|int/100)|int }}
+          {% endif %}
+
+      smart_irrigation_p7_duration:
+        unit_of_measurement: min
+        friendly_name: "Smart Irrigation adjusted P7 duration"
+        icon_template: "mdi:timelapse"
+        value_template: >-
+          {% if (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p7_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+            {{ states("input_number.smart_irrigation_max_duration")|int }}
+          {% else %}
+            {{ (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p7_adj_pct")|int/100)|int }}
+          {% endif %}
+
+      smart_irrigation_p8_duration:
+        unit_of_measurement: min
+        friendly_name: "Smart Irrigation adjusted P8 duration"
+        icon_template: "mdi:timelapse"
+        value_template: >-
+          {% if (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p8_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+            {{ states("input_number.smart_irrigation_max_duration")|int }}
+          {% else %}
+            {{ (states("sensor.smart_irrigation_adjusted_duration")|int * states("input_number.smart_irrigation_p8_adj_pct")|int/100)|int }}
+          {% endif %}
+
+      rainbird_sprinkler:
+        entity_id: group.rainbird_all_sprinklers
+        icon_template: >-
+          {% if is_state('group.rainbird_all_sprinklers', 'on') %}
+            mdi:sprinkler-variant
+          {% else %}
+            mdi:sprout-outline
+          {% endif %}
+        value_template: >-
+          {% if is_state('switch.rainbird_zone_1', 'on') or
+          is_state('switch.rainbird_zone_2', 'on') or
+          is_state('switch.rainbird_zone_3', 'on') or
+          is_state('switch.rainbird_zone_4', 'on') or
+          is_state('switch.rainbird_zone_5', 'on') or
+          is_state('switch.rainbird_zone_6', 'on') or
+          is_state('switch.rainbird_zone_7', 'on') or
+          is_state('switch.rainbird_zone_8', 'on') %} 
+            on
+          {% else %}
+            off
+          {% endif %}
+        attribute_templates:
+          active_zone_duration: >-
+            {% if is_state('switch.rainbird_zone_1', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_1', 'duration') }}
+            {% elif is_state('switch.rainbird_zone_2', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_2', 'duration') }}
+            {% elif is_state('switch.rainbird_zone_3', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_3', 'duration') }}
+            {% elif is_state('switch.rainbird_zone_4', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_4', 'duration') }}
+            {% elif is_state('switch.rainbird_zone_5', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_5', 'duration') }}
+            {% elif is_state('switch.rainbird_zone_6', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_6', 'duration') }}
+            {% elif is_state('switch.rainbird_zone_7', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_7', 'duration') }}
+            {% elif is_state('switch.rainbird_zone_8', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_8', 'duration') }}
+            {% else %}
+              0
+            {% endif %}
+          active_zone_name: >-
+            {% if is_state('switch.rainbird_zone_1', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_1', 'friendly_name') }}
+            {% elif is_state('switch.rainbird_zone_2', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_2', 'friendly_name') }}
+            {% elif is_state('switch.rainbird_zone_3', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_3', 'friendly_name') }}
+            {% elif is_state('switch.rainbird_zone_4', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_4', 'friendly_name') }}
+            {% elif is_state('switch.rainbird_zone_5', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_5', 'friendly_name') }}
+            {% elif is_state('switch.rainbird_zone_6', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_6', 'friendly_name') }}
+            {% elif is_state('switch.rainbird_zone_7', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_7', 'friendly_name') }}
+            {% elif is_state('switch.rainbird_zone_8', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_8', 'friendly_name') }}
+            {% else %}
+              All zones off
+            {% endif %}
+          active_zone: >-
+            {% if is_state('switch.rainbird_zone_1', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_1', 'zone') }}
+            {% elif is_state('switch.rainbird_zone_2', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_2', 'zone') }}
+            {% elif is_state('switch.rainbird_zone_3', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_3', 'zone') }}
+            {% elif is_state('switch.rainbird_zone_4', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_4', 'zone') }}
+            {% elif is_state('switch.rainbird_zone_5', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_5', 'zone') }}
+            {% elif is_state('switch.rainbird_zone_6', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_6', 'zone') }}
+            {% elif is_state('switch.rainbird_zone_7', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_7', 'zone') }}
+            {% elif is_state('switch.rainbird_zone_8', 'on') %} 
+              {{ state_attr('switch.rainbird_zone_8', 'zone') }}
+            {% else %}
+              0
+            {% endif %}
+
+      rainbird_stats_all_zones_average:
+        friendly_name: 'All zones average irrigation time'
+        icon_template: 'mdi:chart-line'
+        unit_of_measurement: min
+        value_template: >-
+          {{ (((states('sensor.rainbird_zone_1_history_today')|float + 
+                states('sensor.rainbird_zone_2_history_today')|float + 
+                states('sensor.rainbird_zone_3_history_today')|float + 
+                states('sensor.rainbird_zone_4_history_today')|float + 
+                states('sensor.rainbird_zone_5_history_today')|float + 
+                states('sensor.rainbird_zone_6_history_today')|float + 
+                states('sensor.rainbird_zone_7_history_today')|float + 
+                states('sensor.rainbird_zone_8_history_today')|float)*60 )/8)|round(2) }}
+        attribute_templates:
+          today: >-
+            {{ (((states('sensor.rainbird_zone_1_history_today')|float + 
+                  states('sensor.rainbird_zone_2_history_today')|float + 
+                  states('sensor.rainbird_zone_3_history_today')|float + 
+                  states('sensor.rainbird_zone_4_history_today')|float + 
+                  states('sensor.rainbird_zone_5_history_today')|float + 
+                  states('sensor.rainbird_zone_6_history_today')|float + 
+                  states('sensor.rainbird_zone_7_history_today')|float + 
+                  states('sensor.rainbird_zone_8_history_today')|float)*60 )/8)|round(2) }}
+          yesterday: >-
+            {{ (((states('sensor.rainbird_zone_1_history_yesterday')|float + 
+                  states('sensor.rainbird_zone_2_history_yesterday')|float + 
+                  states('sensor.rainbird_zone_3_history_yesterday')|float + 
+                  states('sensor.rainbird_zone_4_history_yesterday')|float + 
+                  states('sensor.rainbird_zone_5_history_yesterday')|float + 
+                  states('sensor.rainbird_zone_6_history_yesterday')|float + 
+                  states('sensor.rainbird_zone_7_history_yesterday')|float + 
+                  states('sensor.rainbird_zone_8_history_yesterday')|float)*60 )/8)|round(2) }}
+          week: >-
+            {{ (((states('sensor.rainbird_zone_1_history_week')|float + 
+                  states('sensor.rainbird_zone_2_history_week')|float + 
+                  states('sensor.rainbird_zone_3_history_week')|float + 
+                  states('sensor.rainbird_zone_4_history_week')|float + 
+                  states('sensor.rainbird_zone_5_history_week')|float + 
+                  states('sensor.rainbird_zone_6_history_week')|float + 
+                  states('sensor.rainbird_zone_7_history_week')|float + 
+                  states('sensor.rainbird_zone_8_history_week')|float)*60 )/8)|round(2) }}
+          month: >-
+            {{ (((states('sensor.rainbird_zone_1_history_month')|float + 
+                  states('sensor.rainbird_zone_2_history_month')|float + 
+                  states('sensor.rainbird_zone_3_history_month')|float + 
+                  states('sensor.rainbird_zone_4_history_month')|float + 
+                  states('sensor.rainbird_zone_5_history_month')|float + 
+                  states('sensor.rainbird_zone_6_history_month')|float + 
+                  states('sensor.rainbird_zone_7_history_month')|float + 
+                  states('sensor.rainbird_zone_8_history_month')|float)*60 )/8)|round(2) }}
+          year: >-
+            {{ (((states('sensor.rainbird_zone_1_history_year')|float + 
+                  states('sensor.rainbird_zone_2_history_year')|float + 
+                  states('sensor.rainbird_zone_3_history_year')|float + 
+                  states('sensor.rainbird_zone_4_history_year')|float + 
+                  states('sensor.rainbird_zone_5_history_year')|float + 
+                  states('sensor.rainbird_zone_6_history_year')|float + 
+                  states('sensor.rainbird_zone_7_history_year')|float + 
+                  states('sensor.rainbird_zone_8_history_year')|float)*60 )/8)|round(2) }}
+
+      rainbird_stats_all_zones_total_liters: #liters (mesured manually and added here as multiplication factors to each history sensor)
+        friendly_name: 'All zones total liters of water used'
+        icon_template: 'mdi:chart-line'
+        unit_of_measurement: liters
+        value_template: >-
+          {{ (( states('sensor.rainbird_zone_1_history_today')|float *27 + 
+                states('sensor.rainbird_zone_2_history_today')|float *32 + 
+                states('sensor.rainbird_zone_3_history_today')|float *30 + 
+                states('sensor.rainbird_zone_4_history_today')|float *30 + 
+                states('sensor.rainbird_zone_5_history_today')|float *29 + 
+                states('sensor.rainbird_zone_6_history_today')|float *7 + 
+                states('sensor.rainbird_zone_7_history_today')|float *9 + 
+                states('sensor.rainbird_zone_8_history_today')|float *11) *60)|round() }}
+        attribute_templates:
+          today: >-
+            {{ (( states('sensor.rainbird_zone_1_history_today')|float *27 + 
+                  states('sensor.rainbird_zone_2_history_today')|float *32 + 
+                  states('sensor.rainbird_zone_3_history_today')|float *30 + 
+                  states('sensor.rainbird_zone_4_history_today')|float *30 + 
+                  states('sensor.rainbird_zone_5_history_today')|float *29 + 
+                  states('sensor.rainbird_zone_6_history_today')|float *7 + 
+                  states('sensor.rainbird_zone_7_history_today')|float *9 + 
+                  states('sensor.rainbird_zone_8_history_today')|float *11) *60)|round() }}
+          yesterday: >-
+            {{ (( states('sensor.rainbird_zone_1_history_yesterday')|float *27 + 
+                  states('sensor.rainbird_zone_2_history_yesterday')|float *32 + 
+                  states('sensor.rainbird_zone_3_history_yesterday')|float *30 + 
+                  states('sensor.rainbird_zone_4_history_yesterday')|float *30 + 
+                  states('sensor.rainbird_zone_5_history_yesterday')|float *29 + 
+                  states('sensor.rainbird_zone_6_history_yesterday')|float *7 + 
+                  states('sensor.rainbird_zone_7_history_yesterday')|float *9 + 
+                  states('sensor.rainbird_zone_8_history_yesterday')|float *11) *60)|round() }}
+          week: >-
+            {{ (( states('sensor.rainbird_zone_1_history_week')|float *27 + 
+                  states('sensor.rainbird_zone_2_history_week')|float *32 + 
+                  states('sensor.rainbird_zone_3_history_week')|float *30 + 
+                  states('sensor.rainbird_zone_4_history_week')|float *30 + 
+                  states('sensor.rainbird_zone_5_history_week')|float *29 + 
+                  states('sensor.rainbird_zone_6_history_week')|float *7 + 
+                  states('sensor.rainbird_zone_7_history_week')|float *9 + 
+                  states('sensor.rainbird_zone_8_history_week')|float *11) *60)|round() }}
+          month: >-
+            {{ (( states('sensor.rainbird_zone_1_history_month')|float *27 + 
+                  states('sensor.rainbird_zone_2_history_month')|float *32 + 
+                  states('sensor.rainbird_zone_3_history_month')|float *30 + 
+                  states('sensor.rainbird_zone_4_history_month')|float *30 + 
+                  states('sensor.rainbird_zone_5_history_month')|float *29 + 
+                  states('sensor.rainbird_zone_6_history_month')|float *7 + 
+                  states('sensor.rainbird_zone_7_history_month')|float *9 + 
+                  states('sensor.rainbird_zone_8_history_month')|float *11) *60)|round() }}
+          year: >-
+            {{ (( states('sensor.rainbird_zone_1_history_year')|float *27 + 
+                  states('sensor.rainbird_zone_2_history_year')|float *32 + 
+                  states('sensor.rainbird_zone_3_history_year')|float *30 + 
+                  states('sensor.rainbird_zone_4_history_year')|float *30 + 
+                  states('sensor.rainbird_zone_5_history_year')|float *29 + 
+                  states('sensor.rainbird_zone_6_history_year')|float *7 + 
+                  states('sensor.rainbird_zone_7_history_year')|float *9 + 
+                  states('sensor.rainbird_zone_8_history_year')|float *11) *60)|round() }}
+
+
+      rainbird_zone_1_stats:
+        icon_template: >-
+          {% if is_state('switch.rainbird_zone_1', 'on') %}
+            mdi:chart-line-stacked
+          {% else %}
+            mdi:chart-line
+          {% endif %}
+        value_template: >-
+          {{ state_attr('sensor.rainbird_zone_1_history_today', 'value') }}
+        attribute_templates:
+          today: >-
+            {{ state_attr('sensor.rainbird_zone_1_history_today', 'value') }}
+          yesterday: >-
+            {{ state_attr('sensor.rainbird_zone_1_history_yesterday', 'value') }}
+          week: >-
+            {{ state_attr('sensor.rainbird_zone_1_history_week', 'value') }}
+          month: >-
+            {{ state_attr('sensor.rainbird_zone_1_history_month', 'value') }}
+          year: >-
+            {{ states('sensor.rainbird_zone_1_history_year') + state_attr('sensor.rainbird_zone_1_history_year', 'unit_of_measurement') }}
+
+      rainbird_zone_2_stats:
+        icon_template: >-
+          {% if is_state('switch.rainbird_zone_2', 'on') %}
+            mdi:chart-line-stacked
+          {% else %}
+            mdi:chart-line
+          {% endif %}
+        value_template: >-
+          {{ state_attr('sensor.rainbird_zone_2_history_today', 'value') }}
+        attribute_templates:
+          today: >-
+            {{ state_attr('sensor.rainbird_zone_2_history_today', 'value') }}
+          yesterday: >-
+            {{ state_attr('sensor.rainbird_zone_2_history_yesterday', 'value') }}
+          week: >-
+            {{ state_attr('sensor.rainbird_zone_2_history_week', 'value') }}
+          month: >-
+            {{ state_attr('sensor.rainbird_zone_2_history_month', 'value') }}
+          year: >-
+            {{ states('sensor.rainbird_zone_2_history_year') + state_attr('sensor.rainbird_zone_2_history_year', 'unit_of_measurement') }}
+
+      rainbird_zone_3_stats:
+        icon_template: >-
+          {% if is_state('switch.rainbird_zone_3', 'on') %}
+            mdi:chart-line-stacked
+          {% else %}
+            mdi:chart-line
+          {% endif %}
+        value_template: >-
+          {{ state_attr('sensor.rainbird_zone_3_history_today', 'value') }}
+        attribute_templates:
+          today: >-
+            {{ state_attr('sensor.rainbird_zone_3_history_today', 'value') }}
+          yesterday: >-
+            {{ state_attr('sensor.rainbird_zone_3_history_yesterday', 'value') }}
+          week: >-
+            {{ state_attr('sensor.rainbird_zone_3_history_week', 'value') }}
+          month: >-
+            {{ state_attr('sensor.rainbird_zone_3_history_month', 'value') }}
+          year: >-
+            {{ states('sensor.rainbird_zone_3_history_year') + state_attr('sensor.rainbird_zone_3_history_year', 'unit_of_measurement') }}
+
+      rainbird_zone_4_stats:
+        icon_template: >-
+          {% if is_state('switch.rainbird_zone_4', 'on') %}
+            mdi:chart-line-stacked
+          {% else %}
+            mdi:chart-line
+          {% endif %}
+        value_template: >-
+          {{ state_attr('sensor.rainbird_zone_4_history_today', 'value') }}
+        attribute_templates:
+          today: >-
+            {{ state_attr('sensor.rainbird_zone_4_history_today', 'value') }}
+          yesterday: >-
+            {{ state_attr('sensor.rainbird_zone_4_history_yesterday', 'value') }}
+          week: >-
+            {{ state_attr('sensor.rainbird_zone_4_history_week', 'value') }}
+          month: >-
+            {{ state_attr('sensor.rainbird_zone_4_history_month', 'value') }}
+          year: >-
+            {{ states('sensor.rainbird_zone_4_history_year') + state_attr('sensor.rainbird_zone_4_history_year', 'unit_of_measurement') }}
+
+      rainbird_zone_5_stats:
+        icon_template: >-
+          {% if is_state('switch.rainbird_zone_5', 'on') %}
+            mdi:chart-line-stacked
+          {% else %}
+            mdi:chart-line
+          {% endif %}
+        value_template: >-
+          {{ state_attr('sensor.rainbird_zone_5_history_today', 'value') }}
+        attribute_templates:
+          today: >-
+            {{ state_attr('sensor.rainbird_zone_5_history_today', 'value') }}
+          yesterday: >-
+            {{ state_attr('sensor.rainbird_zone_5_history_yesterday', 'value') }}
+          week: >-
+            {{ state_attr('sensor.rainbird_zone_5_history_week', 'value') }}
+          month: >-
+            {{ state_attr('sensor.rainbird_zone_5_history_month', 'value') }}
+          year: >-
+            {{ states('sensor.rainbird_zone_5_history_year') + state_attr('sensor.rainbird_zone_5_history_year', 'unit_of_measurement') }}
+
+      rainbird_zone_6_stats:
+        icon_template: >-
+          {% if is_state('switch.rainbird_zone_6', 'on') %}
+            mdi:chart-line-stacked
+          {% else %}
+            mdi:chart-line
+          {% endif %}
+        value_template: >-
+          {{ state_attr('sensor.rainbird_zone_6_history_today', 'value') }}
+        attribute_templates:
+          today: >-
+            {{ state_attr('sensor.rainbird_zone_6_history_today', 'value') }}
+          yesterday: >-
+            {{ state_attr('sensor.rainbird_zone_6_history_yesterday', 'value') }}
+          week: >-
+            {{ state_attr('sensor.rainbird_zone_6_history_week', 'value') }}
+          month: >-
+            {{ state_attr('sensor.rainbird_zone_6_history_month', 'value') }}
+          year: >-
+            {{ states('sensor.rainbird_zone_6_history_year') + state_attr('sensor.rainbird_zone_6_history_year', 'unit_of_measurement') }}
+
+      rainbird_zone_7_stats:
+        icon_template: >-
+          {% if is_state('switch.rainbird_zone_7', 'on') %}
+            mdi:chart-line-stacked
+          {% else %}
+            mdi:chart-line
+          {% endif %}
+        value_template: >-
+          {{ state_attr('sensor.rainbird_zone_7_history_today', 'value') }}
+        attribute_templates:
+          today: >-
+            {{ state_attr('sensor.rainbird_zone_7_history_today', 'value') }}
+          yesterday: >-
+            {{ state_attr('sensor.rainbird_zone_7_history_yesterday', 'value') }}
+          week: >-
+            {{ state_attr('sensor.rainbird_zone_7_history_week', 'value') }}
+          month: >-
+            {{ state_attr('sensor.rainbird_zone_7_history_month', 'value') }}
+          year: >-
+            {{ states('sensor.rainbird_zone_7_history_year') + state_attr('sensor.rainbird_zone_7_history_year', 'unit_of_measurement') }}
+
+      rainbird_zone_8_stats:
+        icon_template: >-
+          {% if is_state('switch.rainbird_zone_8', 'on') %}
+            mdi:chart-line-stacked
+          {% else %}
+            mdi:chart-line
+          {% endif %}
+        value_template: >-
+          {{ state_attr('sensor.rainbird_zone_8_history_today', 'value') }}
+        attribute_templates:
+          today: >-
+            {{ state_attr('sensor.rainbird_zone_8_history_today', 'value') }}
+          yesterday: >-
+            {{ state_attr('sensor.rainbird_zone_8_history_yesterday', 'value') }}
+          week: >-
+            {{ state_attr('sensor.rainbird_zone_8_history_week', 'value') }}
+          month: >-
+            {{ state_attr('sensor.rainbird_zone_8_history_month', 'value') }}
+          year: >-
+            {{ states('sensor.rainbird_zone_8_history_year') + state_attr('sensor.rainbird_zone_8_history_year', 'unit_of_measurement') }}
+      
+      smart_irrigation_hourly_netto_precipitation:
+        friendly_name: Smart Irrigation Netto Precipitation (updated hourly)
+        value_template: "{{state_attr('sensor.smart_irrigation_hourly_adjusted_run_time','netto_precipitation')|float|round(2)}}"
+        icon_template: "mdi:sprinkler-variant"
+        unit_of_measurement: mm
+
+      smart_irrigation_bucket:
+        friendly_name: Smart Irrigation Bucket
+        value_template: "{{state_attr('sensor.smart_irrigation_daily_adjusted_run_time','bucket')|float}}"
+        icon_template: "mdi:sprinkler-variant"
+        unit_of_measurement: mm
+
+      average_irrigation_today:
+        friendly_name: Average irrigation today
+        value_template: "{{ ((states('sensor.average_irrigation_today_hours')|float)*60)|round(2) }}"
+        icon_template: "mdi:sprinkler-variant"
+        unit_of_measurement: min
+
+      average_irrigation_today_last_7_days:
+        friendly_name: Average irrigation today
+        value_template: "{{ ((states('sensor.average_irrigation_last_7_days_hours')|float)*60)|round(2) }}"
+        icon_template: "mdi:sprinkler-variant"
+        unit_of_measurement: min
+
+
+  - platform: average
+    name: 'Average irrigation today hours'
+    entities:
+      - sensor.rainbird_zone_1_history_today
+      - sensor.rainbird_zone_2_history_today
+      - sensor.rainbird_zone_3_history_today
+      - sensor.rainbird_zone_4_history_today
+      - sensor.rainbird_zone_5_history_today
+      - sensor.rainbird_zone_6_history_today
+      - sensor.rainbird_zone_7_history_today
+      - sensor.rainbird_zone_8_history_today
+
+  - platform: average
+    name: 'Average irrigation last 7 days hours'
+    duration:
+      days: 7
+    entities:
+      - sensor.rainbird_zone_1_history_today
+      - sensor.rainbird_zone_2_history_today
+      - sensor.rainbird_zone_3_history_today
+      - sensor.rainbird_zone_4_history_today
+      - sensor.rainbird_zone_5_history_today
+      - sensor.rainbird_zone_6_history_today
+      - sensor.rainbird_zone_7_history_today
+      - sensor.rainbird_zone_8_history_today
+
+
+script: 
+
+  smart_irrigation_auto_start:
+    alias: Smart Irrigation AUTO RUN all zones
+    sequence:
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'Starting'
+      - delay:
+          seconds: '5'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P1 init'
+      - condition: numeric_state
+        entity_id: 'sensor.smart_irrigation_p1_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_1
+          duration: '{{ states("sensor.smart_irrigation_p1_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P1 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("sensor.smart_irrigation_p1_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("sensor.smart_irrigation_p1_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P1 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P2 init'
+      - condition: numeric_state
+        entity_id: 'sensor.smart_irrigation_p2_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_2
+          duration: '{{ states("sensor.smart_irrigation_p2_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P2 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("sensor.smart_irrigation_p2_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("sensor.smart_irrigation_p2_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P2 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P3 init'
+      - condition: numeric_state
+        entity_id: 'sensor.smart_irrigation_p3_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_3
+          duration: '{{ states("sensor.smart_irrigation_p3_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P3 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("sensor.smart_irrigation_p3_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("sensor.smart_irrigation_p3_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P3 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P4 init'
+      - condition: numeric_state
+        entity_id: 'sensor.smart_irrigation_p4_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_4
+          duration: '{{ states("sensor.smart_irrigation_p4_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P4 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("sensor.smart_irrigation_p4_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("sensor.smart_irrigation_p4_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P4 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P5 init'
+      - condition: numeric_state
+        entity_id: 'sensor.smart_irrigation_p5_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_5
+          duration: '{{ states("sensor.smart_irrigation_p5_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P5 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("sensor.smart_irrigation_p5_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("sensor.smart_irrigation_p5_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P5 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P6 init'
+      - condition: numeric_state
+        entity_id: 'sensor.smart_irrigation_p6_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_6
+          duration: '{{ states("sensor.smart_irrigation_p6_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P6 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("sensor.smart_irrigation_p6_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("sensor.smart_irrigation_p6_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P6 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P7 init'
+      - condition: numeric_state
+        entity_id: 'sensor.smart_irrigation_p7_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_7
+          duration: '{{ states("sensor.smart_irrigation_p7_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P7 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("sensor.smart_irrigation_p7_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("sensor.smart_irrigation_p7_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P7 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P8 init'
+      - condition: numeric_state
+        entity_id: 'sensor.smart_irrigation_p8_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_8
+          duration: '{{ states("sensor.smart_irrigation_p8_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P8 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("sensor.smart_irrigation_p8_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("sensor.smart_irrigation_p8_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P8 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'Resetting'
+      - service: smart_irrigation.reset_bucket
+      - delay:
+          seconds: '10'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'All done'
+
+  smart_irrigation_manual_start:
+    alias: Manual Irrigation RUN all zones
+    sequence:
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'Starting'
+      - delay:
+          seconds: '5'
+
+      - service: script.turn_on
+        entity_id: script.smart_irrigation_manual_duration_set_to_zones
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P1 init'
+      - condition: numeric_state
+        entity_id: 'input_number.smart_irrigation_p1_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_1
+          duration: '{{ states("input_number.smart_irrigation_p1_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P1 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("input_number.smart_irrigation_p1_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("input_number.smart_irrigation_p1_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P1 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P2 init'
+      - condition: numeric_state
+        entity_id: 'input_number.smart_irrigation_p2_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_2
+          duration: '{{ states("input_number.smart_irrigation_p2_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P2 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("input_number.smart_irrigation_p2_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("input_number.smart_irrigation_p2_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P2 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P3 init'
+      - condition: numeric_state
+        entity_id: 'input_number.smart_irrigation_p3_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_3
+          duration: '{{ states("input_number.smart_irrigation_p3_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P3 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("input_number.smart_irrigation_p3_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("input_number.smart_irrigation_p3_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P3 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P4 init'
+      - condition: numeric_state
+        entity_id: 'input_number.smart_irrigation_p4_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_4
+          duration: '{{ states("input_number.smart_irrigation_p4_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P4 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("input_number.smart_irrigation_p4_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("input_number.smart_irrigation_p4_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P4 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P5 init'
+      - condition: numeric_state
+        entity_id: 'input_number.smart_irrigation_p5_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_5
+          duration: '{{ states("input_number.smart_irrigation_p5_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P5 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("input_number.smart_irrigation_p5_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("input_number.smart_irrigation_p5_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P5 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P6 init'
+      - condition: numeric_state
+        entity_id: 'input_number.smart_irrigation_p6_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_6
+          duration: '{{ states("input_number.smart_irrigation_p6_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P6 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("input_number.smart_irrigation_p6_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("input_number.smart_irrigation_p6_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P6 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P7 init'
+      - condition: numeric_state
+        entity_id: 'input_number.smart_irrigation_p7_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_7
+          duration: '{{ states("input_number.smart_irrigation_p7_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P7 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("input_number.smart_irrigation_p7_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("input_number.smart_irrigation_p7_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P7 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - condition: state
+        entity_id: 'input_boolean.smart_irrigation_force_stop'
+        state: 'off' 
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P8 init'
+      - condition: numeric_state
+        entity_id: 'input_number.smart_irrigation_p8_duration'
+        above: 0
+      - service: rainbird.start_irrigation
+        data_template: 
+          entity_id: switch.rainbird_zone_8
+          duration: '{{ states("input_number.smart_irrigation_p8_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P8 running'
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '{{ ((states("input_number.smart_irrigation_p8_duration")|int)*60)|int }}'
+      - delay:
+          minutes: '{{ states("input_number.smart_irrigation_p8_duration")|int }}'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'P8 done'
+
+      - service: timer.start
+        data_template:
+          entity_id:
+            - timer.smart_irrigation_zone_timer
+          duration: '30'
+      - delay:
+          seconds: '30'
+
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'Resetting'
+      - service: smart_irrigation.reset_bucket
+      - delay:
+          seconds: '10'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'All done'
+
+
+  rainbird_all_off:
+    alias: RainBird All OFF
+    sequence:
+    - entity_id: group.rainbird_all_sprinklers
+      service: switch.turn_off
+
+  smart_irrigation_reset_bucket:
+    alias: Smart irrigation Reset bucket
+    sequence:
+    - data: {}
+      service: smart_irrigation.reset_bucket
+
+  smart_irrigation_reset_state:
+    alias: Smart irrigation Reset state
+    sequence:
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'Idle'
+      - service: timer.cancel
+        entity_id: timer.smart_irrigation_zone_timer
+
+  smart_irrigation_manual_duration_set_to_zones:
+    alias: Set manual duration to zones 
+    sequence:
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.smart_irrigation_p1_duration
+          value: >-
+            {% if (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p1_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+              {{ states("input_number.smart_irrigation_max_duration")|int }}
+            {% else %}
+              {{ (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p1_adj_pct")|int/100)|int }}
+            {% endif %}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.smart_irrigation_p2_duration
+          value: >-
+            {% if (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p2_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+              {{ states("input_number.smart_irrigation_max_duration")|int }}
+            {% else %}
+              {{ (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p2_adj_pct")|int/100)|int }}
+            {% endif %}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.smart_irrigation_p3_duration
+          value: >-
+            {% if (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p3_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+              {{ states("input_number.smart_irrigation_max_duration")|int }}
+            {% else %}
+              {{ (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p3_adj_pct")|int/100)|int }}
+            {% endif %}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.smart_irrigation_p4_duration
+          value: >-
+            {% if (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p4_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+              {{ states("input_number.smart_irrigation_max_duration")|int }}
+            {% else %}
+              {{ (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p4_adj_pct")|int/100)|int }}
+            {% endif %}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.smart_irrigation_p5_duration
+          value: >-
+            {% if (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p5_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+              {{ states("input_number.smart_irrigation_max_duration")|int }}
+            {% else %}
+              {{ (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p5_adj_pct")|int/100)|int }}
+            {% endif %}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.smart_irrigation_p6_duration
+          value: >-
+            {% if (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p6_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+              {{ states("input_number.smart_irrigation_max_duration")|int }}
+            {% else %}
+              {{ (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p6_adj_pct")|int/100)|int }}
+            {% endif %}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.smart_irrigation_p7_duration
+          value: >-
+            {% if (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p7_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+              {{ states("input_number.smart_irrigation_max_duration")|int }}
+            {% else %}
+              {{ (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p7_adj_pct")|int/100)|int }}
+            {% endif %}
+      - service: input_number.set_value
+        data_template:
+          entity_id: input_number.smart_irrigation_p8_duration
+          value: >-
+            {% if (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p8_adj_pct")|int/100 )|int > states("input_number.smart_irrigation_max_duration")|int %}
+              {{ states("input_number.smart_irrigation_max_duration")|int }}
+            {% else %}
+              {{ (states("input_number.smart_irrigation_manual_duration")|int * states("input_number.smart_irrigation_p8_adj_pct")|int/100)|int }}
+            {% endif %}
+
+      # - service: python_script.set_state
+      #   data_template:
+      #     entity_id: sensor.smart_irrigation_daily_adjusted_run_time
+      #     state: '{{ (states("input_number.smart_irrigation_manual_duration")|int*60)|int }}'
+      # - service: python_script.set_state
+      #   data_template:
+      #     entity_id: sensor.smart_irrigation_hourly_adjusted_run_time
+      #     state: '{{ (states("input_number.smart_irrigation_manual_duration")|int*60)|int }}'
+
+  smart_irrigation_manual_duration_set_to_component_sensors: #for testing only normally we should not use it 
+    alias: Set manual duration to main sensors
+    sequence:
+      - service: python_script.set_state
+        data_template:
+          entity_id: sensor.smart_irrigation_daily_adjusted_run_time
+          state: '{{ (states("input_number.smart_irrigation_manual_duration")|int*60)|int }}'
+      - service: python_script.set_state
+        data_template:
+          entity_id: sensor.smart_irrigation_hourly_adjusted_run_time
+          state: '{{ (states("input_number.smart_irrigation_manual_duration")|int*60)|int }}'
+
+
+  smart_irrigation_stop_all:
+    alias: Smart Irrigation STOP ALL
+    sequence:
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'STOPPING'
+      - delay:
+          seconds: '3'
+      - service: script.turn_off
+        entity_id: script.smart_irrigation_manual_duration_set_to_zones
+      - service: script.turn_off
+        entity_id: script.smart_irrigation_manual_duration_set_to_component_sensors
+      - service: script.turn_off
+        entity_id: script.smart_irrigation_auto_start
+      - service: script.turn_off
+        entity_id: script.smart_irrigation_manual_start
+      - delay:
+          seconds: '2'
+      - service: script.turn_on
+        entity_id: script.rainbird_all_off
+      - service: switch.turn_off
+        entity_id: switch.ogrod_zawwod_zraszacz_1290
+      - delay:
+          seconds: '3'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'STOPPED'
+      - delay:
+          seconds: '5'
+      - service: timer.cancel
+        entity_id: timer.smart_irrigation_zone_timer
+      - delay:
+          seconds: '2'
+      - service: var.set
+        data:
+          entity_id:
+            - var.smart_irrigation_progress_status
+          value: 'idle'
+
+
+  smart_irrigation_p1_manual_start:
+    alias: Manual start Zone 1
+    sequence:
+      - service: rainbird.start_irrigation
+        data_template:
+          entity_id: switch.rainbird_zone_1
+          duration: '{{ states("input_number.smart_irrigation_p1_duration")|int }}'
+
+  smart_irrigation_p2_manual_start:
+    alias: Manual start Zone 2
+    sequence:
+      - service: rainbird.start_irrigation
+        data_template:
+          entity_id: switch.rainbird_zone_2
+          duration: '{{ states("input_number.smart_irrigation_p2_duration")|int }}'
+
+  smart_irrigation_p3_manual_start:
+    alias: Manual start Zone 3
+    sequence:
+      - service: rainbird.start_irrigation
+        data_template:
+          entity_id: switch.rainbird_zone_3
+          duration: '{{ states("input_number.smart_irrigation_p3_duration")|int }}'
+
+  smart_irrigation_p4_manual_start:
+    alias: Manual start Zone 4
+    sequence:
+      - service: rainbird.start_irrigation
+        data_template:
+          entity_id: switch.rainbird_zone_4
+          duration: '{{ states("input_number.smart_irrigation_p4_duration")|int }}'
+
+  smart_irrigation_p5_manual_start:
+    alias: Manual start Zone 5
+    sequence:
+      - service: rainbird.start_irrigation
+        data_template:
+          entity_id: switch.rainbird_zone_5
+          duration: '{{ states("input_number.smart_irrigation_p5_duration")|int }}'
+
+  smart_irrigation_p6_manual_start:
+    alias: Manual start Zone 6
+    sequence:
+      - service: rainbird.start_irrigation
+        data_template:
+          entity_id: switch.rainbird_zone_6
+          duration: '{{ states("input_number.smart_irrigation_p6_duration")|int }}'
+
+  smart_irrigation_p7_manual_start:
+    alias: Manual start Zone 7
+    sequence:
+      - service: rainbird.start_irrigation
+        data_template:
+          entity_id: switch.rainbird_zone_7
+          duration: '{{ states("input_number.smart_irrigation_p7_duration")|int }}'
+
+  smart_irrigation_p8_manual_start:
+    alias: Manual start Zone 8
+    sequence:
+      - service: rainbird.start_irrigation
+        data_template:
+          entity_id: switch.rainbird_zone_8
+          duration: '{{ states("input_number.smart_irrigation_p8_duration")|int }}'
+
+
+
+automation:
+  - id: 'smart_irrigation_turned_off'
+    alias: Smart Irrigation turned OFF
+    description: stop all if running
+    trigger:
+    - entity_id: input_boolean.smart_irrigation_enabled
+      from: 'on'
+      platform: state
+      to: 'off'
+    condition: []
+    action:
+    - data: {}
+      entity_id: script.smart_irrigation_stop_all
+      service: script.turn_on
+
+
+
+
+# automation: #moved to node-red
+#   - id: 'smart_irrigation'
+#     alias: Smart Irrigation
+#     description: 'evry second day at 3:00'
+#     trigger:
+#     - at: '00:24'
+#       platform: time
+#     condition:
+#     - condition: and
+#       conditions:
+#       - condition: state
+#         entity_id: input_boolean.smart_irrigation_enabled
+#         state: 'on'
+#       - above: '0'
+#         condition: numeric_state
+#         entity_id: sensor.smart_irrigation_daily_adjusted_run_time
+#       - above: '0'
+#         condition: numeric_state
+#         entity_id: sensor.smart_irrigation_hourly_adjusted_run_time
+#       - condition: time
+#         weekday:
+#           - mon
+#           - wed
+#           - fri
+#           - sun
+#     action:
+#     - data: {}
+#       service: script.smart_irrigation_auto_start

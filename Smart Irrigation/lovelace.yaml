@@ -1,0 +1,754 @@
+
+# to be added to UI as a card 
+
+# title: House
+# views:
+  - badges: []
+    cards:
+      - entities:
+          - entity: input_boolean.smart_irrigation_enabled
+            icon: 'mdi:power-standby'
+          - entities:
+              - entity: timer.smart_irrigation_zone_timer
+                name: state
+              - entity: var.smart_irrigation_progress_status
+                name: phase
+              - entity: input_boolean.smart_irrigation_force_manual_mode
+                name: Forced
+              - entity: sensor.average_irrigation_today
+                name: Today
+                unit: m
+              - entity: sensor.average_irrigation_today_last_7_days
+                name: 7 days
+                unit: m
+            entity: sensor.smart_irrigation_base_schedule_index
+            name: Status
+            secondary_info: current state
+            show_state: false
+            type: 'custom:multiple-entity-row'
+          - entity: timer.smart_irrigation_zone_timer
+            name: Curr. phase countdown
+          - type: section
+          - entities:
+              - attribute: base_schedule_index_minutes
+                entity: sensor.smart_irrigation_base_schedule_index
+                name: base
+              - attribute: adjusted_run_time_minutes
+                entity: sensor.smart_irrigation_hourly_adjusted_run_time
+                name: hourly
+              - attribute: adjusted_run_time_minutes
+                entity: sensor.smart_irrigation_daily_adjusted_run_time
+                name: daily
+              - entity: sensor.smart_irrigation_adjusted_duration
+                name: adjusted
+            entity: sensor.smart_irrigation_base_schedule_index
+            icon: 'mdi:camera-timer'
+            name: Smart Irrigation
+            secondary_info: duration calcs
+            show_state: false
+            type: 'custom:multiple-entity-row'
+          - entity: input_number.smart_irrigation_adj_pct
+            icon: 'mdi:water-percent'
+            name: Duration adjustment
+          - entity: input_number.smart_irrigation_max_duration
+            icon: 'mdi:clock-end'
+            name: Max Irrigation
+          - entities:
+              - icon: 'mdi:bitbucket'
+                name: Reset bucket
+                state_color: true
+                tap_action:
+                  action: call-service
+                  service: smart_irrigation.smart_irrigation_reset_bucket
+              - entity: input_boolean.smart_irrigation_force_stop
+                icon: 'mdi:progress-close'
+                name: stop n.phase
+                state_color: true
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.smart_irrigation_force_manual_mode
+                icon: 'mdi:clock-start'
+                name: Force irrgation
+                state_color: true
+                tap_action:
+                  action: toggle
+            entity: input_boolean.smart_irrigation_force_manual_mode
+            icon: 'mdi:play-box-outline'
+            name: Manage run
+            secondary_info: 'bucket, force mode'
+            show_state: false
+            type: 'custom:multiple-entity-row'
+          - type: section
+          - entity: input_number.smart_irrigation_manual_duration
+            icon: 'mdi:clock-fast'
+          - entities:
+              - icon: 'mdi:animation-play-outline'
+                name: START
+                state_color: true
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.smart_irrigation_manual_start
+              - icon: 'mdi:clock-in'
+                name: Push t.
+                state_color: true
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.smart_irrigation_manual_duration_set_to_zones
+              - entity: input_boolean.smart_irrigation_show_rainbird_sw
+                icon: 'mdi:water-pump'
+                name: Rainbird
+                state_color: true
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.smart_irrigation_show_stats
+                icon: 'mdi:chart-line'
+                name: Stats
+                state_color: true
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.smart_irrigation_show_info
+                icon: 'mdi:cogs'
+                name: Info
+                state_color: true
+                tap_action:
+                  action: toggle
+            entity: input_boolean.smart_irrigation_force_manual_mode
+            icon: 'mdi:account-cog-outline'
+            name: Manage
+            secondary_info: 'bucket, force mode'
+            show_state: false
+            type: 'custom:multiple-entity-row'
+          - entities:
+              - entity: input_boolean.smart_irrigation_show_zone1
+                icon: 'mdi:numeric-1-circle-outline'
+                name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.smart_irrigation_show_zone2
+                icon: 'mdi:numeric-2-circle-outline'
+                name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.smart_irrigation_show_zone3
+                icon: 'mdi:numeric-3-circle-outline'
+                name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.smart_irrigation_show_zone4
+                icon: 'mdi:numeric-4-circle-outline'
+                name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+            entity: input_boolean.smart_irrigation_show_zone1
+            icon: 'mdi:cogs'
+            name: Settings
+            secondary_info: zones 1-4
+            show_state: false
+            type: 'custom:multiple-entity-row'
+          - entities:
+              - entity: input_boolean.smart_irrigation_show_zone5
+                icon: 'mdi:numeric-5-circle-outline'
+                name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.smart_irrigation_show_zone6
+                icon: 'mdi:numeric-6-circle-outline'
+                name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.smart_irrigation_show_zone7
+                icon: 'mdi:numeric-7-circle-outline'
+                name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.smart_irrigation_show_zone8
+                icon: 'mdi:numeric-8-circle-outline'
+                name: false
+                state_color: true
+                tap_action:
+                  action: toggle
+            entity: input_boolean.smart_irrigation_show_zone1
+            icon: 'mdi:cogs'
+            name: Settings
+            secondary_info: zones 5-8
+            show_state: false
+            type: 'custom:multiple-entity-row'
+        show_header_toggle: false
+        title: Smart Irrigation
+        type: entities
+      - card:
+          entities:
+            - entities:
+                - entity: switch.rainbird_zone_1
+                  name: 1.Front
+                  toggle: true
+                - entity: switch.rainbird_zone_2
+                  name: 2.Bok
+                  toggle: true
+                - entity: switch.rainbird_zone_3
+                  name: 3.Taras1
+                  toggle: true
+                - entity: switch.rainbird_zone_4
+                  name: 4.Taras2
+                  toggle: true
+              entity: sensor.smart_irrigation_base_schedule_index
+              icon: 'mdi:sprinkler-variant'
+              name: Rainbird SW
+              secondary_info: zones 1-4
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - entity: switch.rainbird_zone_5
+                  name: 5.Wykusz
+                  toggle: true
+                - entity: switch.rainbird_zone_6
+                  name: 6.Wyspa
+                  toggle: true
+                - entity: switch.rainbird_zone_7
+                  name: 7.Tujki L
+                  toggle: true
+                - entity: switch.rainbird_zone_8
+                  name: 8.Tujki P
+                  toggle: true
+              entity: sensor.smart_irrigation_base_schedule_index
+              icon: 'mdi:sprinkler-variant'
+              name: Rainbird SW
+              secondary_info: zones 5-8
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entity: switch.ogrod_zawwod_zraszacz_1290
+              icon: 'mdi:water-pump'
+              name: Garden water main valve
+          show_header_toggle: false
+          title: Rainbird switches/sprinklers
+          type: entities
+        conditions:
+          - entity: input_boolean.smart_irrigation_show_rainbird_sw
+            state: 'on'
+        type: conditional
+      - card:
+          entities:
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_stats_all_zones_average
+              name: Irrgation stats
+              secondary_info: avarage time (min)
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_stats_all_zones_total_liters
+              name: Irrgation stats
+              secondary_info: total water (litres)
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - attribute: number_of_sprinklers
+                  name: zones
+                - attribute: flow
+                  name: l/min/zone
+                - attribute: throughput
+                  name: l/min
+                - attribute: area
+                  name: m2
+                - attribute: auto_refresh_time
+                  name: calcs at
+              entity: sensor.smart_irrigation_base_schedule_index
+              icon: 'mdi:cogs'
+              name: Base config
+              secondary_info: null
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - attribute: water_budget
+                  entity: sensor.smart_irrigation_hourly_adjusted_run_time
+                  name: w.budget
+                - entity: sensor.smart_irrigation_hourly_netto_precipitation
+                  name: precipitation
+                - entity: sensor.smart_irrigation_bucket
+                  name: bucket
+              entity: sensor.smart_irrigation_bucket
+              icon: 'mdi:cogs'
+              name: Bucket info
+              secondary_info: null
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - attribute: rain
+                  name: rain
+                - attribute: snow
+                  name: snow
+                - attribute: precipitation
+                  name: precipitation
+                - attribute: precipitation_rate
+                  entity: sensor.smart_irrigation_base_schedule_index
+                  name: prec. rate
+              entity: sensor.smart_irrigation_hourly_adjusted_run_time
+              icon: 'mdi:cogs'
+              name: Weather
+              secondary_info: forecasted
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - type: section
+            - entities:
+                - icon: 'mdi:bitbucket'
+                  name: daily
+                  state_color: true
+                  tap_action:
+                    action: call-service
+                    service: >-
+                      smart_irrigation.smart_irrigation_calculate_daily_adjusted_run_time
+                - icon: 'mdi:bitbucket'
+                  name: hourly
+                  state_color: true
+                  tap_action:
+                    action: call-service
+                    service: >-
+                      smart_irrigation.smart_irrigation_calculate_hourly_adjusted_run_time
+                - icon: 'mdi:bitbucket'
+                  name: push my times
+                  state_color: true
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: >-
+                        script.smart_irrigation_manual_duration_set_to_component_sensors
+                - icon: 'mdi:sync'
+                  name: Reset state
+                  state_color: true
+                  tap_action:
+                    action: call-service
+                    service: script.turn_on
+                    service_data:
+                      entity_id: script.smart_irrigation_reset_state
+              entity: input_boolean.smart_irrigation_force_manual_mode
+              icon: 'mdi:play-box-outline'
+              name: Dev tests
+              secondary_info: force sensors/state
+              show_header_toggle: false
+              show_state: false
+              type: 'custom:multiple-entity-row'
+          title: Smart Irrigation config + stats
+          type: entities
+        conditions:
+          - entity: input_boolean.smart_irrigation_show_info
+            state: 'on'
+        type: conditional
+      - card:
+          entities:
+            - entity: input_number.smart_irrigation_p1_adj_pct
+              icon: 'mdi:water-percent'
+              name: Irrgation adjustment
+            - entity: sensor.smart_irrigation_p1_duration
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_1_stats
+              name: Zone 1 Front
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entity: input_number.smart_irrigation_p1_duration
+            - entity: script.smart_irrigation_p1_manual_start
+          show_header_toggle: false
+          title: Zone 1 - Front
+          type: entities
+        conditions:
+          - entity: input_boolean.smart_irrigation_show_zone1
+            state: 'on'
+        type: conditional
+      - card:
+          entities:
+            - entity: input_number.smart_irrigation_p2_adj_pct
+              icon: 'mdi:water-percent'
+              name: Irrgation adjustment
+            - entity: sensor.smart_irrigation_p2_duration
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_2_stats
+              name: Zone 2 Bok domu
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entity: input_number.smart_irrigation_p2_duration
+            - entity: script.smart_irrigation_p2_manual_start
+          show_header_toggle: false
+          title: Zone 2 - Bok domu
+          type: entities
+        conditions:
+          - entity: input_boolean.smart_irrigation_show_zone2
+            state: 'on'
+        type: conditional
+      - card:
+          entities:
+            - entity: input_number.smart_irrigation_p3_adj_pct
+              icon: 'mdi:water-percent'
+              name: Irrgation adjustment
+            - entity: sensor.smart_irrigation_p3_duration
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_3_stats
+              name: Zone 3 Taras 1
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entity: input_number.smart_irrigation_p3_duration
+            - entity: script.smart_irrigation_p3_manual_start
+          show_header_toggle: false
+          title: Zone 3 - Tras 1
+          type: entities
+        conditions:
+          - entity: input_boolean.smart_irrigation_show_zone3
+            state: 'on'
+        type: conditional
+      - card:
+          entities:
+            - entity: input_number.smart_irrigation_p4_adj_pct
+              icon: 'mdi:water-percent'
+              name: Irrgation adjustment
+            - entity: sensor.smart_irrigation_p4_duration
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_4_stats
+              name: Zone 4 Taras 2
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entity: input_number.smart_irrigation_p4_duration
+            - entity: script.smart_irrigation_p4_manual_start
+          show_header_toggle: false
+          title: Zone 4 - Tras 2
+          type: entities
+        conditions:
+          - entity: input_boolean.smart_irrigation_show_zone4
+            state: 'on'
+        type: conditional
+      - card:
+          entities:
+            - entity: input_number.smart_irrigation_p5_adj_pct
+              icon: 'mdi:water-percent'
+              name: Irrgation adjustment
+            - entity: sensor.smart_irrigation_p5_duration
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_5_stats
+              name: Zone 5 Wykusz
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entity: input_number.smart_irrigation_p5_duration
+            - entity: script.smart_irrigation_p5_manual_start
+          show_header_toggle: false
+          title: Zone 5 - Wykusz
+          type: entities
+        conditions:
+          - entity: input_boolean.smart_irrigation_show_zone5
+            state: 'on'
+        type: conditional
+      - card:
+          entities:
+            - entity: input_number.smart_irrigation_p6_adj_pct
+              icon: 'mdi:water-percent'
+              name: Irrgation adjustment
+            - entity: sensor.smart_irrigation_p6_duration
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_6_stats
+              name: Zone 6 Wyspa
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entity: input_number.smart_irrigation_p6_duration
+            - entity: script.smart_irrigation_p6_manual_start
+          show_header_toggle: false
+          title: Zone 6 - Wyspa
+          type: entities
+        conditions:
+          - entity: input_boolean.smart_irrigation_show_zone6
+            state: 'on'
+        type: conditional
+      - card:
+          entities:
+            - entity: input_number.smart_irrigation_p7_adj_pct
+              icon: 'mdi:water-percent'
+              name: Irrgation adjustment
+            - entity: sensor.smart_irrigation_p7_duration
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_7_stats
+              name: Zone 7 Tujki L
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entity: input_number.smart_irrigation_p7_duration
+            - entity: script.smart_irrigation_p7_manual_start
+          show_header_toggle: false
+          title: Zone 7 - Tujki L
+          type: entities
+        conditions:
+          - entity: input_boolean.smart_irrigation_show_zone7
+            state: 'on'
+        type: conditional
+      - card:
+          entities:
+            - entity: input_number.smart_irrigation_p8_adj_pct
+              icon: 'mdi:water-percent'
+              name: Irrgation adjustment
+            - entity: sensor.smart_irrigation_p8_duration
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_8_stats
+              name: Zone 8 Tujki P
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entity: input_number.smart_irrigation_p8_duration
+            - entity: script.smart_irrigation_p8_manual_start
+          show_header_toggle: false
+          title: Zone 8 - Tujki P
+          type: entities
+        conditions:
+          - entity: input_boolean.smart_irrigation_show_zone8
+            state: 'on'
+        type: conditional
+      - card:
+          entities:
+            - type: section
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_1_stats
+              name: Zone 1 Front
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_2_stats
+              name: Zone 2 Bok garażu
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_3_stats
+              name: Zone 3 Taras 1
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_4_stats
+              name: Zone 4 Taras 2
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_5_stats
+              name: Zone 5 Wykusz
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_6_stats
+              name: Zone 6 Wyspa
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_7_stats
+              name: Zone 7 Tujki L
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+            - entities:
+                - attribute: today
+                  name: today
+                - attribute: yesterday
+                  name: yesterday
+                - attribute: week
+                  name: week
+                - attribute: month
+                  name: month
+                - attribute: year
+                  name: year
+              entity: sensor.rainbird_zone_8_stats
+              name: Zone 8 Tujki P
+              secondary_info: counters
+              show_state: false
+              type: 'custom:multiple-entity-row'
+          title: Irrigation stats
+          type: entities
+        conditions:
+          - entity: input_boolean.smart_irrigation_show_stats
+            state: 'on'
+        type: conditional
+    icon: 'mdi:sprinkler-variant'
+    path: smart-irrigation
+    title: Smart Irrigation
